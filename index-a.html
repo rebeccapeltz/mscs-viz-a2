@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Bitcoin Alpha Web of Trust</title>
+
+    <!-- <link href="node_modules/nvd3/build/nv.d3.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="node_modules/vis/dist/vis.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="node_modules/vis/dist/vis-network.min.css" rel="stylesheet" type="text/css"> -->
+    <link href="style/index.css" rel="stylesheet" type="text/css">
+    <style>
+         #mynetwork {
+            width: 1200px;
+            height: 600px;
+            display: block;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.2.7/cytoscape.js"></script>
+    <script src="js/main.js"></script>
+
+</head>
+
+<body>
+
+    <h2>Bit Coin Alpha Web of Trust Network Chart</h2>
+    <h3>Data source:
+        <a href="http://snap.stanford.edu/data/soc-sign-bitcoinalpha.html">http://snap.stanford.edu/data/soc-sign-bitcoinalpha.html</a>
+    </h3>
+    <pre>
+        @inproceedings{kumar2016edge,
+            title={Edge weight prediction in weighted signed networks},
+            author={Kumar, Srijan and Spezzano, Francesca and Subrahmanian, VS and Faloutsos, Christos},
+            booktitle={Data Mining (ICDM), 2016 IEEE 16th International Conference on},
+            pages={221--230},
+            year={2016},
+            organization={IEEE}
+          }
+    </pre>
+    <pre>SOURCE, TARGET, RATING, TIME</pre>
+    <p> </p>
+    <!-- <div id="cy"></div> -->
+
+
+    <div id="mynetwork"></div>
+
+
+
+
+</body>
+
+</html>

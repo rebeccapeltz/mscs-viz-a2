@@ -7,14 +7,21 @@
 
     <!-- <link href="node_modules/nvd3/build/nv.d3.css" rel="stylesheet" type="text/css"> -->
     <link href="node_modules/vis/dist/vis.min.css" rel="stylesheet" type="text/css">
+    <link href="node_modules/vis/dist/vis-network.min.css" rel="stylesheet" type="text/css">
     <link href="style/index.css" rel="stylesheet" type="text/css">
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script> -->
-    <script
-    src="https://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
     <script src="node_modules/vis/dist/vis.min.js"></script>
     <script src="js/main.js"></script>
+
+    <style type="text/css">
+        #mynetwork {
+            width: 1200px;
+            height: 600px;
+            border: 1px solid lightgray;
+        }
+    </style>
 </head>
 
 <body>
@@ -34,12 +41,37 @@
           }
     </pre>
     <pre>SOURCE, TARGET, RATING, TIME</pre>
-    <p> </p>
-   
+    <p>Select month and year to see all rating for a specific month. Click on a use node to see all ratings for that user. </p>
+    <div class="date-select">
+        <select id="mo">
+            <option value="0">Select month</option>
+            <option value="1">Jan</option>
+            <option value="2">Feb</option>
+            <option value="3">Mar</option>
+            <option value="4">Apr</option>
+            <option value="5">May</option>
+            <option value="6">Jun</option>
+            <option value="7">Jul</option>
+            <option value="8">Aug</option>
+            <option value="9">Sep</option>
+            <option value="10">Oct</option>
+            <option value="11">Nov</option>
+            <option value="12">Dec</option>
+        </select>
+        <select id="yr">
+            <option value="0">Select year</option>
+            <option value="2011">2011</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+        </select>
+    </div>
+    <input type="button" id="btn-go" value="go">
 
+    <div id="mynetwork"></div>
 
-    <div id="chart1"></div>
-   
 
 
 
