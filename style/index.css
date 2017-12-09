@@ -1,27 +1,10 @@
- text {
-    font: 12px sans-serif;
-}
+.floated {
+    float:left;
+    margin-right:5px;
+ }
 
-svg {
-    display: block;
-}
-
-html,
-body,
-svg {
-    display: block;
-    /* margin: 0px;
-    padding: 0px; */
-    height: 100%;
-    width: 100%;
-}
-
-
-#chart1 {
-    height: 60%; 
-    width: 60%;
-}
-
-#winter, #spring, #summer, #fall {
-    display: inline-block;
-}
+ .filtered {
+     margin-top: 20px;
+     margin-bottom: 20px;
+  
+ }
