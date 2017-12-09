@@ -23,6 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.addEventListener("userTargetFilter",(event)=>{
         console.log(event);
+        nodes.splice(0,nodes.length)
+        edges.splice(0,nodes.length);
         processUserTargetFilter(event.detail.nodes);
         renderChart();
     });
@@ -31,7 +33,10 @@ document.addEventListener("DOMContentLoaded", () => {
         let selectedMo = document.querySelector('#mo option:checked').value;
         let selectedYr = document.querySelector("#yr option:checked").value;
         let selectedYmo = '2011-9';
-        processYmoFilter(selectedYmo);
+        let selectedYear = '2014';
+        nodes.splice(0,nodes.length)
+        edges.splice(0,nodes.length);
+        processYearFilter(selectedYear);
         renderChart();
     })
 
@@ -49,12 +54,13 @@ class Node {
 
 class Edge {
     constructor(from, to, rating) {
+        if (rating <=0){
+            console.log("neg",from,to,rating);
+        }
         this.from = from;
         this.to = to;
-        // this.value = rating + 10;
-        let color = {};
-        color.color = rating <= 0 ? "red" : "black";
-        this.color = color;
+        this.color = {};
+        this.color.color = rating <= 0 ? "red" : "black";
         this.title = "rating: " + rating;
     }
 }
@@ -79,24 +85,25 @@ function processData(allText) {
         let obj = {};
         obj["SOURCE"] = data[0];
         obj["TARGET"] = data[1];
-        obj["RATING"] = data[2];
-        obj["TIME"] = ymo;
+        obj["RATING"] = parseInt(data[2]);
+        obj["TIME"] = year;
 
-        if (!yearIndex[ymo]) {
-            yearIndex[ymo] = [];
+        if (!yearIndex[year]) {
+            yearIndex[year] = [];
         }
         if (!userTargetIndex[obj["TARGET"]]) {
             userTargetIndex[obj["TARGET"]] = [];
         }
 
-        yearIndex[ymo].push(obj);
+        yearIndex[year].push(obj);
         userTargetIndex[obj["TARGET"]].push(obj);
         // }
     }
     console.log(userTargetIndex);
+    console.table(yearIndex["2014"]);
 }
 
-function processYmoFilter(selectedYmo) {
+function processYearFilter(selectedYmo) {
 
     let nodeIndex = {};
     if (!yearIndex[selectedYmo]) {
@@ -119,7 +126,7 @@ function processYmoFilter(selectedYmo) {
         edges.push(edgeObj);
     }
     //console.table(nodes);
-    // console.table(edges);
+    console.table(edges);
     // create a network
 }
 function processUserTargetFilter(selectedUser) {
