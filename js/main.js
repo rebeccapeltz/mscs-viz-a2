@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.addEventListener("userTargetFilter",(event)=>{
-        console.log(event);
+        // console.log(event);
         nodes.splice(0,nodes.length)
         edges.splice(0,edges.length);
         processUserTargetFilter(event.detail.nodes);
@@ -62,9 +62,9 @@ class Node {
 
 class Edge {
     constructor(from, to, rating) {
-        if (rating <=0){
-            console.log("neg",from,to,rating);
-        }
+        // if (rating <=0){
+        //     console.log("neg",from,to,rating);
+        // }
         this.from = from;
         this.to = to;
         this.color = {};
@@ -108,8 +108,8 @@ function processData(allText) {
         userTargetIndex[obj["TARGET"]].push(obj);
         // }
     }
-    console.log(userTargetIndex);
-    console.table(yearIndex["2014"]);
+    // console.log(userTargetIndex);
+    //console.table(yearIndex["2014"]);
 }
 
 function processYearFilter(selectedYmo) {
@@ -135,7 +135,7 @@ function processYearFilter(selectedYmo) {
         edges.push(edgeObj);
     }
     //console.table(nodes);
-    console.table(edges);
+    //console.table(edges);
     // create a network
 }
 function processUserTargetFilter(selectedUser) {
@@ -184,7 +184,7 @@ function renderChart() {
     };
     let network = new vis.Network(container, vizData, options);
     network.on("selectNode", function (params) {
-        console.log('selectNode Event:', params);
+        // console.log('selectNode Event:', params);
         let event = new CustomEvent('userTargetFilter', { detail: params });
         document.dispatchEvent(event);
     });
