@@ -3,8 +3,6 @@ const yearIndex = {};
 const userTargetIndex = {};
 const nodes = [];
 const edges = [];
-
-// const colors = ['rgb(166,206,227)','rgb(31,120,180)','rgb(178,223,138)','rgb(51,160,44)','rgb(251,154,153)','rgb(227,26,28)','rgb(253,191,111)','rgb(255,127,0)','rgb(202,178,214)','rgb(106,61,154)'];
 const headers = ["SOURCE", "TARGET", "RATING", "TIME"];
 document.addEventListener("DOMContentLoaded", () => {
     let btnGo = document.querySelector("#btn-go");
@@ -27,12 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
         edges.splice(0,edges.length);
         processUserTargetFilter(event.detail.nodes);
         let graphTitle = document.querySelector("#graph-title");        
-        graphTitle.innerHTML = `Bitcoin relationship rating filtered by year: ${event.detail.nodes}`;
+        graphTitle.innerHTML = `Bitcoin relationship rating filtered by user: ${event.detail.nodes}`;
         renderChart();
     });
 
     btnGo.addEventListener("click", () => {
-        // let selectedMo = document.querySelector('#mo option:checked').value;
         let selectedYr = document.querySelector("#yr option:checked").value;
         let graphTitle = document.querySelector("#graph-title");
         // let selectedYmo = '2011-9';
@@ -56,7 +53,6 @@ class Node {
         if (id === "1" || id === "11" || id === "250"){
             this.value = 1;
             this.color = "lime";
-            this.border = "black";
         } else {
             this.value = 2;
         }
@@ -73,6 +69,7 @@ class Edge {
         this.to = to;
         this.color = {};
         this.color.color = rating <= 0 ? "red" : "black";
+        
         this.title = "rating: " + rating;
     }
 }
