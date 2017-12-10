@@ -24,18 +24,23 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("userTargetFilter",(event)=>{
         console.log(event);
         nodes.splice(0,nodes.length)
-        edges.splice(0,nodes.length);
+        edges.splice(0,edges.length);
         processUserTargetFilter(event.detail.nodes);
+        let graphTitle = document.querySelector("#graph-title");        
+        graphTitle.innerHTML = `Bitcoin relationship rating filtered by year: ${event.detail.nodes}`;
         renderChart();
     });
 
     btnGo.addEventListener("click", () => {
-        let selectedMo = document.querySelector('#mo option:checked').value;
+        // let selectedMo = document.querySelector('#mo option:checked').value;
         let selectedYr = document.querySelector("#yr option:checked").value;
-        let selectedYmo = '2011-9';
-        let selectedYear = '2014';
+        let graphTitle = document.querySelector("#graph-title");
+        // let selectedYmo = '2011-9';
+        let selectedYear = selectedYr;
+        graphTitle.innerHTML = `Bitcoin relationship rating filtered by year: ${selectedYear}`;
+        
         nodes.splice(0,nodes.length)
-        edges.splice(0,nodes.length);
+        edges.splice(0,edges.length);
         processYearFilter(selectedYear);
         renderChart();
     })
@@ -48,6 +53,13 @@ class Node {
     constructor(id, label) {
         this.id = id;
         this.label = "user:" + label;
+        if (id === "1" || id === "11" || id === "250"){
+            this.value = 1;
+            this.color = "lime";
+            this.border = "black";
+        } else {
+            this.value = 2;
+        }
 
     }
 }
@@ -104,7 +116,7 @@ function processData(allText) {
 }
 
 function processYearFilter(selectedYmo) {
-
+    
     let nodeIndex = {};
     if (!yearIndex[selectedYmo]) {
         alert("no data for this time period");

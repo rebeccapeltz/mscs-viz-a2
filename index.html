@@ -30,6 +30,7 @@
     <h3>Data source:
         <a href="http://snap.stanford.edu/data/soc-sign-bitcoinalpha.html">http://snap.stanford.edu/data/soc-sign-bitcoinalpha.html</a>
     </h3>
+    <p>Note this is a subset focused on 3 users: 1, 11, and 250</p>
     <pre>
         @inproceedings{kumar2016edge,
             title={Edge weight prediction in weighted signed networks},
@@ -41,9 +42,9 @@
           }
     </pre>
     <pre>SOURCE, TARGET, RATING, TIME</pre>
-    <p>Select month and year to see all rating for a specific month. Click on a use node to see all ratings for that user. </p>
+    <p>Select a year to see all rating for a specific month. Click on a use node to see all ratings for that user. </p>
     <div class="date-select filtered">
-        <select class="floated" id="mo">
+        <!-- <select class="floated" id="mo">
             <option value="0">Select month</option>
             <option value="1">Jan</option>
             <option value="2">Feb</option>
@@ -57,9 +58,10 @@
             <option value="10">Oct</option>
             <option value="11">Nov</option>
             <option value="12">Dec</option>
-        </select>
+        </select> -->
+        <!-- <label class="floated" for="targeted-user"><input placeholder="Enter targeted user id" type="text" id="targeted-user"></label> -->
         <select class="floated"  id="yr">
-            <option value="0">Select year</option>
+            <!-- <option value="0">Select year</option> -->
             <option value="2011">2011</option>
             <option value="2012">2012</option>
             <option value="2013">2013</option>
@@ -71,7 +73,7 @@
         <br style="float:clear">
     </div>
    
-
+    <h2 id="graph-title"></h2>
     <div id="mynetwork" ></div>
 
 
